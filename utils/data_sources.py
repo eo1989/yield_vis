@@ -29,7 +29,7 @@ def get_us_yield_data() -> pd.DataFrame:
     return df
 
 
-def get_uk_yield_curve_data():
+def get_uk_yield_curve_data() -> pd.DataFrame:
     df = pd.read_csv("data/boe_yc.csv", index_col = 0)
     df.index = pd.to_datetime(df.index)
     return df
