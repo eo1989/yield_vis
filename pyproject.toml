@@ -19,6 +19,7 @@ preview = true
 fix = true
 show-fixes = true
 line-length = 88
+include = ["*.ipynb", "*.qmd"]
 # indent-size = 4
 # indent-style = "space"
 
