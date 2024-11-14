@@ -20,7 +20,7 @@ load_figure_template("lux")
 title = html.H1(
 	children = 'Yield Curves Visualization',
 	className="text-center mt-4",
-    stlye = { 'fontSize': 30 }
+    style = { 'fontSize': 30 }
 )
 
 ## =========== Modal ===========
@@ -53,6 +53,11 @@ _button_github = dbc.Button(
     id = "gh-link",
     style={"text-transform": "none"},
 )
+
+# add table of data behind a button if viewers want to see it
+# _button_spreadsheet = dbc.Button(
+#     "View Data",
+# )
 
 # headers
 header = dbc.Navbar(

@@ -1,5 +1,5 @@
 from dash import dcc, html
-from dash_bootstrap_components import dbc
+import dash_bootstrap_components as dbc
 from utils import yield_curve_plots as ycp
 
 
@@ -35,7 +35,7 @@ def create_layout(df, source, id_vars, low, high):
 				[
 					dbc.Col(
 						dcc.Graph(
-							id = "US", figure = ycp.plot_yield_curve(df, source_text = source)
+							id = "US", figure = ycp.plot_yield_surface(df, source_text = source)
 						),
 						xs = 12,
 						sm = 12,
@@ -43,7 +43,7 @@ def create_layout(df, source, id_vars, low, high):
 						lg = 12,
 						xl = 12,
 						xxl = 6,
-						className = "mt-4",
+						class_name = "mt-4",
 					)
 				],
 				justify = "center",
@@ -51,14 +51,14 @@ def create_layout(df, source, id_vars, low, high):
 			dbc.Row(
 				[
 					dbc.Col(
-						dcc.Graph(figure = ycp.plot_yield_curve(df, source_text = source)),
+						dcc.Graph(figure = ycp.plot_heatmap(df, source_text = source)),
 						xs = 12,
 						sm = 12,
 						md = 12,
 						lg = 12,
 						xl = 12,
 						xxl = 6,
-						className = "mt-4",
+						class_name = "mt-4",
 					)
 				],
 				justify = "center",
@@ -68,7 +68,7 @@ def create_layout(df, source, id_vars, low, high):
 				[
 					dbc.Col(
 						dcc.Graph(
-							figure = ycp.plot_yield_curve(
+							figure = ycp.plot_line_spread(
 								df, idx = id_vars, low = low, high = high, source_text = source
 							)
 						),
@@ -78,7 +78,7 @@ def create_layout(df, source, id_vars, low, high):
 						lg = 12,
 						xl = 12,
 						xxl = 6,
-						className = "mt-4",
+						class_name = "mt-4",
 					)
 				],
 				justify = "center",

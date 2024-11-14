@@ -19,17 +19,17 @@ def retrieve_us_yield_data() -> pd.DataFrame:
         "1-month",
     ]
     df.index = df.index + pd.offsets.MonthEnd(0)
-    df.to_csv("../data/fed_yc.csv", header=True, index=True)
+    df.to_csv("../data/_fed_yc.csv", header=True, index=True)
     return df
 
 
 def get_us_yield_data() -> pd.DataFrame:
-    df = pd.read_csv("data/fed_yc.csv", index_col=0)
+    df = pd.read_csv("data/_fed_yc.csv", index_col=0)
     df.index = pd.to_datetime(df.index)
     return df
 
 
 def get_uk_yield_curve_data() -> pd.DataFrame:
-    df = pd.read_csv("data/boe_yc.csv", index_col = 0)
+    df = pd.read_csv("data/_boe_yc.csv", index_col = 0)
     df.index = pd.to_datetime(df.index)
     return df

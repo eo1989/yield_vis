@@ -11,7 +11,21 @@ dependencies = [
     "pandas-datareader>=0.10.0",
     "plotly>=5.24.1",
     "dash-bootstrap-templates>=1.3.0",
+    "dash-vega-components",
     "gunicorn>=23.0.0",
+    "kaleido",
+    "great-tables",
+    "streamlit",
+    "holoviews",
+    "hvplot",
+    "panel",
+    "param",
+    "altair",
+    "bokeh",
+    "dask[complete]",
+    "shiny",
+    "statsmodels",
+    "polars",
 ]
 
 [tool.ruff]
