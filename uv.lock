@@ -2176,6 +2176,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "ipykernel" },
+    { name = "narwhals" },
     { name = "pytest" },
 ]
 
@@ -2207,6 +2208,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "ipykernel", specifier = ">=6.29.5" },
+    { name = "narwhals", specifier = ">=1.13.5" },
     { name = "pytest", specifier = ">=8.3.3" },
 ]
 
