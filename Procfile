@@ -1,1 +1,1 @@
-web: sh start.sh
+web: uv run gunicorn app:server --workers 2 --bind 0.0.0.0:$PORT
