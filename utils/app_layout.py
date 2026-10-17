@@ -10,82 +10,91 @@ def create_layout(df, source, id_vars, low, high):
 				[
 					dbc.Col(
 						html.Div(
-							children = [
+							children=[
 								dcc.Graph(
-									id = "graph",
-									figure = ycp.plot_historical_yield_curve(
-										df, source_text = source, id_vars = id_vars
+									id="graph",
+									figure=ycp.plot_historical_yield_curve(
+										df, source_text=source, id_vars=id_vars
 									),
-									style = {"width": "100%"},
+									style={"width": "100%"},
 								)
 							]
 						),
-						xs = 12,
-						sm = 12,
-						md = 12,
-						lg = 12,
-						xl = 12,
-						xxl = 6,
-						class_name = "mt-4",
+						xs=12,
+						sm=12,
+						md=12,
+						lg=12,
+						xl=12,
+						xxl=6,
+						class_name="mt-4",
 					)
 				],
-				justify = "center",
+				justify="center",
 			),
 			dbc.Row(
 				[
 					dbc.Col(
 						dcc.Graph(
-							id = "US", figure = ycp.plot_yield_surface(df, source_text = source)
+							id="US",
+							figure=ycp.plot_yield_surface(
+								df, source_text=source
+							),
 						),
-						xs = 12,
-						sm = 12,
-						md = 12,
-						lg = 12,
-						xl = 12,
-						xxl = 6,
-						class_name = "mt-4",
+						xs=12,
+						sm=12,
+						md=12,
+						lg=12,
+						xl=12,
+						xxl=6,
+						class_name="mt-4",
 					)
 				],
-				justify = "center",
+				justify="center",
 			),
 			dbc.Row(
 				[
 					dbc.Col(
-						dcc.Graph(figure = ycp.plot_heatmap(df, source_text = source)),
-						xs = 12,
-						sm = 12,
-						md = 12,
-						lg = 12,
-						xl = 12,
-						xxl = 6,
-						class_name = "mt-4",
+						dcc.Graph(
+							figure=ycp.plot_heatmap(df, source_text=source)
+						),
+						xs=12,
+						sm=12,
+						md=12,
+						lg=12,
+						xl=12,
+						xxl=6,
+						class_name="mt-4",
 					)
 				],
-				justify = "center",
+				justify="center",
 			),
 			html.Br(),
 			dbc.Row(
 				[
 					dbc.Col(
 						dcc.Graph(
-							figure = ycp.plot_line_spread(
-								df, idx = id_vars, low = low, high = high, source_text = source
+							figure=ycp.plot_line_spread(
+								df,
+								idx=id_vars,
+								low=low,
+								high=high,
+								source_text=source,
 							)
 						),
-						xs = 12,
-						sm = 12,
-						md = 12,
-						lg = 12,
-						xl = 12,
-						xxl = 6,
-						class_name = "mt-4",
+						xs=12,
+						sm=12,
+						md=12,
+						lg=12,
+						xl=12,
+						xxl=6,
+						class_name="mt-4",
 					)
 				],
-				justify = "center",
+				justify="center",
 			),
 		],
-		fluid = True,
-		class_name = "dbc",
-		style = {"width": "100%"},
+		fluid=True,
+		class_name="dbc",
+		style={"width": "100%"},
 	)
 	return layout
