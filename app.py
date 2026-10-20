@@ -10,9 +10,11 @@ dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.2
 
 app = dash.Dash(
 	__name__,
-	# external_stylesheets=[dbc.themes.SPACELAB, dbc_css],
+	external_stylesheets=[dbc.themes.SPACELAB, dbc_css],
 	# external_stylesheets=[dbc.themes.COSMO, dbc_css],
-	meta_tags=[{"name": "viewport", "content": "width=device-width"}],
+	meta_tags=[
+		{"name": "viewport", "content": "width=device-width,initial-scale=1.0"}
+	],
 	use_pages=True,
 	use_async=True,
 )
@@ -60,9 +62,7 @@ _button_github = dbc.Button(
 )
 
 # add table of data behind a button if viewers want to see it
-# _button_spreadsheet = dbc.Button(
-#     "View Data",
-# )
+_button_spreadsheet = dbc.Button("View Data")
 
 # headers
 header = dbc.Navbar(
@@ -91,7 +91,7 @@ header = dbc.Navbar(
 						align="center",
 					),
 				],
-				align="center",
+				align="stretch",
 			),
 			dbc.Row(
 				[
@@ -114,7 +114,7 @@ header = dbc.Navbar(
 						# md = "2",
 					)
 				],
-				align="center",
+				align="stretch",
 			),
 		],
 		fluid=True,
@@ -271,5 +271,5 @@ def toggle_modal(n1, n2, is_open):
 
 
 if __name__ == "__main__":
-	server = app.server
-app.run_server(debug=False, host="0.0.0.0", port=10000)
+	server = app.run()
+app.run(debug=False, host="0.0.0.0", port=10000)

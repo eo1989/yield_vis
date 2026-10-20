@@ -1,3 +1,4 @@
+import logging
 import os
 import pathlib
 
@@ -8,6 +9,7 @@ from dotenv import load_dotenv
 from fredapi import Fred
 
 load_dotenv()
+logger = logging.getLogger(__name__)
 
 TENORS = ["GS1m", "GS3m", "GS6m", "GS1", "GS2", "GS3", "GS5", "GS10", "GS30"]
 DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
@@ -81,9 +83,20 @@ def retrieve_us_yield_data() -> pd.DataFrame:
 
 def get_us_yield_data() -> pd.DataFrame:
 	if not US_YIELD_CSV.exists() or US_YIELD_CSV.stat().st_size == 0:
-		retrieve_us_yield_data()
+		return retrieve_us_yield_data()
 	df = pd.read_csv(US_YIELD_CSV, index_col=0)
 	df.index = pd.to_datetime(df.index)
+
+	# FRED's Treasury curve series are monthly. Refresh a cache that has not
+	# received a new observation for 45 days, while keeping cached data usable
+	# when FRED is temporarily unreachable.
+	if pd.Timestamp.now().normalize() - df.index.max() > pd.Timedelta(days=45):
+		try:
+			return retrieve_us_yield_data()
+		except Exception:
+			logger.exception(
+				"Could not refresh U.S. yield data from FRED; using cached CSV."
+			)
 	return df
 
 

@@ -14,7 +14,6 @@ dependencies = [
   "dash-mantine-components>=2.8.0",
   "dash-vega-components",
   "dash[async,fastapi,quart]>=4.4.1",
-  "dask[complete]",
   "financepy>=1.0.1",
   "fredapi>=0.5.2",
   "great-tables",
@@ -33,9 +32,7 @@ dependencies = [
   "plotly>=7.1.0",
   "polars[all]>=1.44.2",
   "pyarrow>=18.0.0",
-  "python-dotenv>=1.2.4",
   "requests>=2.32.3",
-  "shiny",
   "statsmodels",
   "streamlit",
   "uvicorn[standard]>=0.32.0",
@@ -47,6 +44,7 @@ dev = [
   "ipykernel>=7.4.0",
   "narwhals",
   "pytest>=9.1.1",
+  "python-dotenv>=1.2.4",
 ]
 
 [tool.ruff]
